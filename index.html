@@ -81,7 +81,7 @@
         </div>
         <div class="span9">
           <section id="Main"><h1>fl-assert</h1>
-<p>Simple assertion functions to throw errors in the code.</p><h2>Usage</h2>
+<p>Simple assertion functions to throw errors in the code.</p><p><a href="http://fourlabsldn.github.io/fl-assert/index.html">READ THE DOCS</a><br /><a href="https://github.com/fourlabsldn/fl-assert/">Check out the repo</a></p><h2>Usage</h2>
 <p>Use it like this:</p><pre><code class="lang-javascript">const myCollection = [1, 2];
 
 assert(myCollection.length &gt; 0, &#39;myCollection must have at least one element&#39;); // Nothing happens
@@ -91,9 +91,12 @@ assert.warn(typeof myCollection[0] === &#39;number&#39;, &#39;First element of c
 assert.warn(typeof myCollection[0] === &#39;string&#39;, &#39;First element of collection is not a string&#39;); // Logs a warning with the string passed as the warning message
 </code></pre>
 <h2>ES6</h2>
-<p>The main file in the dist folder is an ES6 module, and (it is specified as such)[<a href="https://github.com/rollup/rollup/wiki/jsnext:main">https://github.com/rollup/rollup/wiki/jsnext:main</a>], so you can just write<br />this line below start rocking.</p><pre><code class="lang-javascript">import assert from &#39;fl-assert&#39;
+<p>The main file in the dist folder is an ES6 module, and <a href="https://github.com/rollup/rollup/wiki/jsnext:main">it is specified as such</a>, so you can just write<br />this line below start rocking.</p><pre><code class="lang-javascript">import assert from &#39;fl-assert&#39;
 </code></pre>
-</section>
+<h2>Install</h2>
+<h3>Bower</h3>
+<pre><code>npm install --save-dev fl-assert
+</code></pre></section>
         </div>
       </div>
     </div>
