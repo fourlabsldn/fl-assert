@@ -3,6 +3,7 @@
 Simple assertion functions to throw errors in the code.
 
 [READ THE DOCS](http://fourlabsldn.github.io/fl-assert/index.html)
+[Check out the repo](https://github.com/fourlabsldn/fl-assert/)
 ## Usage
 Use it like this:
 ``` javascript
@@ -20,4 +21,10 @@ The main file in the dist folder is an ES6 module, and [it is specified as such]
 this line below start rocking.
 ``` javascript
 import assert from 'fl-assert'
+```
+
+## Install
+### Bower
+```
+npm install --save-dev fl-assert
 ```

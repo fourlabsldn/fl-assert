@@ -1,0 +1,23 @@
+{
+  "name": "fl-assert",
+  "description": "Simple assert function for throwing errors",
+  "main": "dist/assert.js",
+  "authors": [
+    "Lazamar @ FourLabs"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "assert",
+    "error",
+    "function"
+  ],
+  "homepage": "http://fourlabsldn.github.io/fl-assert/index.html",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
