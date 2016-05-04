@@ -2,7 +2,7 @@
 
 Simple assertion functions to throw errors in the code.
 
-(READ THE DOCS)[http://fourlabsldn.github.io/fl-assert/index.html]
+[READ THE DOCS](http://fourlabsldn.github.io/fl-assert/index.html)
 ## Usage
 Use it like this:
 ``` javascript
@@ -16,7 +16,7 @@ assert.warn(typeof myCollection[0] === 'string', 'First element of collection is
 ```
 
 ## ES6
-The main file in the dist folder is an ES6 module, and (it is specified as such)[https://github.com/rollup/rollup/wiki/jsnext:main], so you can just write
+The main file in the dist folder is an ES6 module, and [it is specified as such](https://github.com/rollup/rollup/wiki/jsnext:main), so you can just write
 this line below start rocking.
 ``` javascript
 import assert from 'fl-assert'
