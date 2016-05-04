@@ -2,7 +2,7 @@
 
 Simple assertion functions to throw errors in the code.
 
-
+(READ THE DOCS)[http://fourlabsldn.github.io/fl-assert/index.html]
 ## Usage
 Use it like this:
 ``` javascript

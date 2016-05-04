@@ -6,7 +6,7 @@
   "jsnext:main": "dist/assert.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dpeloy-docs": "gulp build-docs && git-directory-deploy --directory docs --branch gh-pages"
+    "deploy-docs": "gulp build-docs && git-directory-deploy --directory docs --branch gh-pages"
   },
   "author": "Lazamar @ FourLabs",
   "license": "ISC",
