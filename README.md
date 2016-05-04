@@ -2,7 +2,7 @@
 
 Simple assertion functions to throw errors in the code.
 
-[READ THE DOCS](http://fourlabsldn.github.io/fl-assert/index.html)
+Read the [DOCS](http://fourlabsldn.github.io/fl-assert/index.html)
 
 [Check out the repo](https://github.com/fourlabsldn/fl-assert/)
 ## Usage
