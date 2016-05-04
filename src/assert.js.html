@@ -123,7 +123,9 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Throws an error if the boolean passed to it evaluates to false.<br />To be used like this:<br />        assert(myDate !== undefined, &quot;Date cannot be undefined.&quot;);</p> </div>
+          <div class="description"><p>Throws an error if the boolean passed to it evaluates to false.<br />To be used like this:</p><pre><code class="lang-javascript">        assert(myDate !== undefined, &quot;Date cannot be undefined.&quot;);
+</code></pre>
+ </div>
           <pre><code class="language-javascript">function assert(condition, errorMessage) {
   const error = processCondition(condition, errorMessage);
   if (typeof error === 'string') {
@@ -169,7 +171,9 @@
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Logs a warning if the boolean passed to it evaluates to false.<br />To be used like this:<br />        assert.warn(myDate !== undefined, &quot;No date provided.&quot;);</p> </div>
+          <div class="description"><p>Logs a warning if the boolean passed to it evaluates to false.<br />To be used like this:</p><pre><code class="lang-javascript">        assert.warn(myDate !== undefined, &quot;No date provided.&quot;);
+</code></pre>
+ </div>
           <pre><code class="language-javascript">assert.warn = function warn(condition, errorMessage) {
   const error = processCondition(condition, errorMessage);
   if (typeof error === 'string') {
