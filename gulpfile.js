@@ -21,7 +21,7 @@ gulp.task('rollup', () => {
       }),
     ],
   }))
-  .pipe(sourcemaps.write('.'))
+  .pipe(sourcemaps.write())
   .pipe(gulp.dest('./dist/'));
 });
 
