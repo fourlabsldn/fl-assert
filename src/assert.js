@@ -27,7 +27,6 @@ function processCondition(condition, errorMessage) {
     // if (assertFunction.caller && assertFunction.caller.name) {
     //   completeErrorMessage = `${assertFunction.caller.name}: `;
     // }
-
     completeErrorMessage += errorMessage;
     return completeErrorMessage;
   }
