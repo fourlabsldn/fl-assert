@@ -1,6 +1,6 @@
 {
   "name": "fl-assert",
-  "version": "1.0.0",
+  "version": "1.0.10",
   "description": "Simple assert function for throwing errors",
   "main": "dist/assert.js",
   "jsnext:main": "dist/assert.js",
