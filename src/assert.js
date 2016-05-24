@@ -12,21 +12,23 @@
 function processCondition(condition, errorMessage) {
   if (!condition) {
     let completeErrorMessage = '';
+    const re = /at ([^\s]+)\s\(/g;
+    const stackTrace = new Error().stack;
+    const stackFunctions = [];
 
-    // TODO: Use Error.stack to add caller names to functions.
-    // Strict mode doesn't allow us to use callers
-    // // The assert function is calling this processCondition and we are
-    // // really interested is in who is calling the assert function.
-    // const assertFunction = processCondition.caller;
-    //
-    // if (!assertFunction) {
-    //   // The program should never ever ever come here.
-    //   throw new Error('No "assert" function as a caller?');
-    // }
-    //
-    // if (assertFunction.caller && assertFunction.caller.name) {
-    //   completeErrorMessage = `${assertFunction.caller.name}: `;
-    // }
+    let funcName = re.exec(stackTrace);
+    while (funcName && funcName[1]) {
+      stackFunctions.push(funcName[1]);
+      funcName = re.exec(stackTrace);
+    }
+
+    // Number 0 is processCondition itself,
+    // Number 1 is assert,
+    // Number 2 is the caller function.
+    if (stackFunctions[2]) {
+      completeErrorMessage = `${stackFunctions[2]}: ${completeErrorMessage}`;
+    }
+
     completeErrorMessage += errorMessage;
     return completeErrorMessage;
   }

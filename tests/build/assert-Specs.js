@@ -12,22 +12,23 @@
 function processCondition(condition, errorMessage) {
   if (!condition) {
     var completeErrorMessage = '';
+    var re = /at ([^\s]+)\s\(/g;
+    var stackTrace = new Error().stack;
+    var stackFunctions = [];
 
-    // TODO: Use Error.stack to add caller names to functions.
-    // Strict mode doesn't allow us to use callers
-    // // The assert function is calling this processCondition and we are
-    // // really interested is in who is calling the assert function.
-    var assertFunction = processCondition.caller;
-
-    if (!assertFunction) {
-      // The program should never ever ever come here.
-      throw new Error('No "assert" function as a caller?');
+    var funcName = re.exec(stackTrace);
+    while (funcName && funcName[1]) {
+      stackFunctions.push(funcName[1]);
+      funcName = re.exec(stackTrace);
     }
 
-    if (assertFunction.caller && assertFunction.caller.name) {
-      completeErrorMessage = assertFunction.caller.name + ': ';
+    // Number 0 is processCondition itself,
+    // Number 1 is assert,
+    // Number 2 is the caller function.
+    if (stackFunctions[2]) {
+      completeErrorMessage = stackFunctions[2] + ': ' + completeErrorMessage;
     }
-    console.dir(Error().stack);
+
     completeErrorMessage += errorMessage;
     return completeErrorMessage;
   }
@@ -84,17 +85,9 @@ describe('The assert module should', function () {
 
   it('throw an error with an appropriate message', function () {
     var message = 'An error occurred';
-    expect(function () {
+    expect(function testFunction() {
       assert(false, message);
-    }).toThrowError(message);
+    }).toThrowError('testFunction: ' + message);
   });
-
-  xit('not throw when the condition is true', function () {
-    expect(function () {
-      return assert.warn(true);
-    }).not.toThrow();
-  });
-
-  assert(false, 'asdfasdf');
 });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlcyI6WyJhc3NlcnQtU3BlY3MuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLyogZXNsaW50LWVudiBqYXNtaW5lICovXG5pbXBvcnQgYXNzZXJ0IGZyb20gJy4uLy4uL2Rpc3QvYXNzZXJ0LmpzJztcblxuZGVzY3JpYmUoJ1RoZSBhc3NlcnQgbW9kdWxlIHNob3VsZCcsICgpID0+IHtcbiAgaXQoJ3Rocm93IHdoZW4gdGhlIGNvbmRpdGlvbiBpcyBmYWxzZScsICgpID0+IHtcbiAgICBleHBlY3QoKCkgPT4gYXNzZXJ0KGZhbHNlKSkudG9UaHJvdygpO1xuICB9KTtcblxuICBpdCgnbm90IHRocm93IHdoZW4gdGhlIGNvbmRpdGlvbiBpcyB0cnVlJywgKCkgPT4ge1xuICAgIGV4cGVjdCgoKSA9PiBhc3NlcnQodHJ1ZSkpLm5vdC50b1Rocm93KCk7XG4gIH0pO1xuXG4gIGl0KCd0aHJvdyBhbiBlcnJvciB3aXRoIGFuIGFwcHJvcHJpYXRlIG1lc3NhZ2UnLCAoKSA9PiB7XG4gICAgY29uc3QgbWVzc2FnZSA9ICdBbiBlcnJvciBvY2N1cnJlZCc7XG4gICAgZXhwZWN0KCgpID0+IHtcbiAgICAgIGFzc2VydChmYWxzZSwgbWVzc2FnZSk7XG4gICAgfSkudG9UaHJvd0Vycm9yKG1lc3NhZ2UpO1xuICB9KTtcblxuICB4aXQoJ25vdCB0aHJvdyB3aGVuIHRoZSBjb25kaXRpb24gaXMgdHJ1ZScsICgpID0+IHtcbiAgICBleHBlY3QoKCkgPT4gYXNzZXJ0Lndhcm4odHJ1ZSkpLm5vdC50b1Rocm93KCk7XG4gIH0pO1xuICBcbiAgYXNzZXJ0KGZhbHNlLCAnYXNkZmFzZGYnKTtcbn0pO1xuIl0sImZpbGUiOiJhc3NlcnQtU3BlY3MuanMiLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlcyI6WyJhc3NlcnQtU3BlY3MuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLyogZXNsaW50LWVudiBqYXNtaW5lICovXG5pbXBvcnQgYXNzZXJ0IGZyb20gJy4uLy4uL2Rpc3QvYXNzZXJ0LmpzJztcblxuZGVzY3JpYmUoJ1RoZSBhc3NlcnQgbW9kdWxlIHNob3VsZCcsICgpID0+IHtcbiAgaXQoJ3Rocm93IHdoZW4gdGhlIGNvbmRpdGlvbiBpcyBmYWxzZScsICgpID0+IHtcbiAgICBleHBlY3QoKCkgPT4gYXNzZXJ0KGZhbHNlKSkudG9UaHJvdygpO1xuICB9KTtcblxuICBpdCgnbm90IHRocm93IHdoZW4gdGhlIGNvbmRpdGlvbiBpcyB0cnVlJywgKCkgPT4ge1xuICAgIGV4cGVjdCgoKSA9PiBhc3NlcnQodHJ1ZSkpLm5vdC50b1Rocm93KCk7XG4gIH0pO1xuXG4gIGl0KCd0aHJvdyBhbiBlcnJvciB3aXRoIGFuIGFwcHJvcHJpYXRlIG1lc3NhZ2UnLCAoKSA9PiB7XG4gICAgY29uc3QgbWVzc2FnZSA9ICdBbiBlcnJvciBvY2N1cnJlZCc7XG4gICAgZXhwZWN0KGZ1bmN0aW9uIHRlc3RGdW5jdGlvbigpIHtcbiAgICAgIGFzc2VydChmYWxzZSwgbWVzc2FnZSk7XG4gICAgfSkudG9UaHJvd0Vycm9yKGB0ZXN0RnVuY3Rpb246ICR7bWVzc2FnZX1gKTtcbiAgfSk7XG59KTtcbiJdLCJmaWxlIjoiYXNzZXJ0LVNwZWNzLmpzIiwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=

@@ -12,14 +12,8 @@ describe('The assert module should', () => {
 
   it('throw an error with an appropriate message', () => {
     const message = 'An error occurred';
-    expect(() => {
+    expect(function testFunction() {
       assert(false, message);
-    }).toThrowError(message);
+    }).toThrowError(`testFunction: ${message}`);
   });
-
-  xit('not throw when the condition is true', () => {
-    expect(() => assert.warn(true)).not.toThrow();
-  });
-  
-  assert(false, 'asdfasdf');
 });
